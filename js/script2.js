@@ -22,7 +22,7 @@ function addrow() {
     var td = $("<td></td>")
 
     var inp = $("<input></input>") 
-    inp.attr("type","string")
+    inp.attr("type","text")
     td.append(inp)
     tr.append(td)
 
@@ -61,6 +61,7 @@ function addrow() {
 
     var inp = $("<button></button>")
     inp.attr("type","button")
+    inp.addClass('waves-effect waves-light btn-small')
     inp.text("+")
     inp.click(addrow)
     td.append(inp)
@@ -70,6 +71,7 @@ function addrow() {
 
     var inp = $("<button></button>")
     inp.attr("type","button")
+    inp.addClass('waves-effect waves-light btn-small')
     inp.text("-")
     inp.bind('click',delet)
     td.append(inp)
