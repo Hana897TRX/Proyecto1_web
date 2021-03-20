@@ -19,8 +19,7 @@ function buildTicket() {
     var totalAbsoluto = 0.0;
 
     var rootcard = $('<div></div>');
-        rootcard.addClass('card'); 
-        rootcard.attr('style','margin-top: 5%; margin-left: 20%; margin-right: 20%;');
+        rootcard.addClass('card');
     
     var cardContent = $('<div></div>');
         cardContent.addClass('card-content');
@@ -189,7 +188,12 @@ function buildTicket() {
                     var h6 = $('<h6></h6>');
                         h6.text(' Call center: +52 777 341 2411 ');
                         center.append(h6);
-                    var h7 = $('<h6></h6>');
+
+                    var h6 = $('<h6></h6>');
+                        h6.text(Date());
+                        center.append(h6);
+                    
+                        var h7 = $('<h6></h6>');
                         h7.text(' #Hailgrasa ');
                         center.append(h7);
                     var h5 = $('<h6></h6>');
@@ -211,6 +215,16 @@ function buildTicket() {
 }   
 
 function addrow() {
+    let columnas = $(this).closest("tr").find("input");
+    // (e|E)(\+|\-)[0-9](\.[0-9])?
+    let regex = new RegExp('^\d+$')
+    //let regex = new RegExp('(e|E)(\+|\-)[0-9](\.[0-9])?')
+
+    if(regex.exec($(columnas[2]).val()) && regex.exec($(columnas[3]).val())){
+        swal("Ups, Something went wrong!", "Revisa los campos de datos");
+        return;
+    }
+
     var direction = $("#tabla")
     var tr = $("<tr></tr>")
     var td = $("<td></td>")
@@ -272,7 +286,6 @@ function addrow() {
     tr.append(td)
     
     direction.append(tr)
-
 }
 
 function delet(){
